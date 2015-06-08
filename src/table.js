@@ -22,6 +22,7 @@ module.exports = React.createClass({
         data: React.PropTypes.array,
         columns: React.PropTypes.array,
         children: React.PropTypes.object,
+        row: React.PropTypes.object,
     },
 
     getDefaultProps() {
