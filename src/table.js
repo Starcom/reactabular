@@ -28,7 +28,8 @@ module.exports = React.createClass({
         return {
             header: {},
             data: [],
-            columns: []
+            columns: [],
+            row: {},
         };
     },
 
@@ -41,7 +42,8 @@ module.exports = React.createClass({
             $merge: {
                 header: undefined,
                 data: undefined,
-                columns: undefined
+                columns: undefined,
+                row: undefined,
             }
         });
 
