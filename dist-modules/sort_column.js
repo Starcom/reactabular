@@ -15,7 +15,8 @@ module.exports = function (columns, column, done) {
 
     done({
         sortingColumn: column,
-        columns: columns });
+        columns: columns
+    });
 };
 
 module.exports.sort = function (data, column) {

@@ -23,13 +23,16 @@ module.exports = React.createClass({
         header: React.PropTypes.object,
         data: React.PropTypes.array,
         columns: React.PropTypes.array,
-        children: React.PropTypes.object },
+        children: React.PropTypes.object,
+        row: React.PropTypes.object
+    },
 
     getDefaultProps: function getDefaultProps() {
         return {
             header: {},
             data: [],
-            columns: []
+            columns: [],
+            row: {}
         };
     },
 
@@ -37,12 +40,14 @@ module.exports = React.createClass({
         var header = this.props.header;
         var data = this.props.data;
         var columns = this.props.columns;
+        var rowCfg = this.props.row;
 
         var props = update(this.props, {
             $merge: {
                 header: undefined,
                 data: undefined,
-                columns: undefined
+                columns: undefined,
+                row: undefined
             }
         });
 
@@ -75,9 +80,16 @@ module.exports = React.createClass({
                 'tbody',
                 null,
                 data.map(function (row, i) {
+                    var trAttrs = {
+                        key: i + '-row'
+                    };
+                    if ('className' in rowCfg) {
+                        trAttrs['className'] = rowCfg.className(row);
+                    }
                     return React.createElement(
                         'tr',
-                        { key: i + '-row' },
+                        trAttrs,
+                        ' ',
                         columns.map(function (column, j) {
                             var property = column.property;
                             var value = row[property];
