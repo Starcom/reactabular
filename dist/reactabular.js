@@ -137,13 +137,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	                            result[k] = k.indexOf('on') === 0 ? v.bind(null, column) : v;
 	                        });
 	
+	                        var columnContent = isFunction(column.header) ? column.header() : column.header;
+	
 	                        return React.createElement(
 	                            'th',
 	                            _extends({
 	                                key: i + '-header',
 	                                className: cx(column.classes)
 	                            }, columnHeader),
-	                            column.header
+	                            columnContent
 	                        );
 	                    })
 	                )

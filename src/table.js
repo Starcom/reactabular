@@ -58,12 +58,14 @@ module.exports = React.createClass({
                                 result[k] = k.indexOf('on') === 0 ? v.bind(null, column) : v;
                             });
 
+                            var columnContent = isFunction(column.header) ? column.header() : column.header;
+
                             return (
                                 <th
                                     key={i + '-header'}
                                     className={cx(column.classes)}
                                     {...columnHeader}
-                                >{column.header}</th>
+                                >{columnContent}</th>
                             );
                         })}
                     </tr>
